@@ -1,0 +1,6 @@
+@ManagerWalletTest_HostAddress = http://localhost:5222
+
+GET {{ManagerWalletTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

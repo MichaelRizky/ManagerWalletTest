@@ -1,0 +1,30 @@
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+
+# .NET build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Test results
+TestResults/
+coverage/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
