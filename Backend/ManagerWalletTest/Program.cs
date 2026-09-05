@@ -71,7 +71,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthentication(); // Wajib ditambahkan sebelum UseAuthorization
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
