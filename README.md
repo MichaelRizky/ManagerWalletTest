@@ -1,6 +1,6 @@
-# Manager Wallet API
+# Manager Wallet Project
 
-A secure digital wallet API built with **.NET 10**. The application provides JWT authentication, digital wallet management, top-up functionality, and peer-to-peer transfers using database transactions.
+A full-stack digital wallet application built with a **.NET 10** Backend API and a **Nuxt.js** Frontend. The application provides secure authentication, digital wallet management, top-up functionality, and peer-to-peer transfers.
 
 Documentation is available in two languages:
 
@@ -11,7 +11,13 @@ Documentation is available in two languages:
 
 ## Bahasa Indonesia
 
-Wallet API adalah aplikasi berbasis **.NET 10** yang menyediakan fitur:
+Proyek ini terbagi menjadi dua bagian utama:
+1. **Backend**: RESTful API yang dibangun menggunakan .NET 10.
+2. **Frontend**: Antarmuka web interaktif yang dibangun menggunakan Nuxt.js.
+
+### 🚀 Backend (API)
+
+Backend aplikasi menyediakan fitur:
 
 - 🔐 Autentikasi menggunakan JWT
 - 💰 Manajemen dompet digital
@@ -20,20 +26,18 @@ Wallet API adalah aplikasi berbasis **.NET 10** yang menyediakan fitur:
 - 🔄 Transaksi database untuk menjaga konsistensi saldo
 - 📖 Swagger UI untuk dokumentasi dan pengujian API
 
-### Prasyarat
+#### Prasyarat Backend
 
 Pastikan perangkat Anda telah memiliki:
-
 - .NET 10 SDK
 - Microsoft SQL Server
 - SQL Server Management Studio (SSMS)
 - Entity Framework Core Tools (`dotnet-ef`)
 
-### Konfigurasi Environment
+#### Konfigurasi Environment Backend
 
 Aplikasi menggunakan file `.env` untuk menyimpan konfigurasi dan secret aplikasi.
-
-Buat file `.env` di direktori root project:
+Buat file `.env` di direktori `Backend`:
 
 ```env
 JwtSecretKey=your-secure-jwt-secret-key-minimum-32-characters
@@ -41,100 +45,73 @@ DbUserId=your-database-user
 DbPassword=your-database-password
 ```
 
-#### Keterangan
-
 | Variable | Deskripsi |
 |---|---|
 | `JwtSecretKey` | Kunci rahasia untuk menandatangani dan memverifikasi JWT. Gunakan minimal 32 karakter. |
 | `DbUserId` | User ID yang digunakan untuk autentikasi koneksi ke SQL Server. |
 | `DbPassword` | Password untuk akun database SQL Server. |
 
-> ⚠️ **Security Notice**
->
-> Jangan menggunakan secret key atau password database yang sebenarnya di dalam `README.md`.
->
-> Jangan commit file `.env` ke repository. Tambahkan `.env` ke `.gitignore`.
+> ⚠️ **Security Notice**: Jangan commit file `.env` ke repository.
 
-Contoh `.gitignore`:
+#### Instalasi & Menjalankan Backend
 
-```gitignore
-.env
-```
+1. Buka terminal dan masuk ke direktori Backend:
+   ```bash
+   cd Backend
+   ```
+2. Restore dependencies:
+   ```bash
+   dotnet restore
+   ```
+3. Lakukan Database Migration (pastikan `.env` dan SQL Server siap):
+   ```bash
+   dotnet ef database update
+   ```
+   *(Jika `dotnet-ef` belum terinstal, jalankan `dotnet tool install --global dotnet-ef`)*
+4. Jalankan aplikasi:
+   ```bash
+   dotnet run
+   ```
+5. Akses Swagger UI untuk menguji API di URL yang muncul di terminal (contoh: `https://localhost:xxxx/swagger`).
 
-### Instalasi
+---
 
-Clone repository dan masuk ke direktori project:
+### 🖥️ Frontend (Web)
 
-```bash
-git clone <repository-url>
-cd <project-directory>
-```
+Frontend aplikasi merupakan antarmuka pengguna yang dibangun menggunakan **Nuxt.js** yang terhubung dengan API Backend.
 
-Restore dependencies:
+#### Prasyarat Frontend
+- Node.js (versi 18 atau terbaru disarankan)
+- npm, yarn, pnpm, atau bun
 
-```bash
-dotnet restore
-```
+#### Instalasi & Menjalankan Frontend
 
-### Database Migration
-
-Pastikan SQL Server sedang berjalan dan konfigurasi database pada `.env` sudah benar.
-
-Kemudian jalankan migration yang tersedia:
-
-```bash
-dotnet ef database update
-```
-
-Perintah tersebut akan menerapkan migration dan membuat tabel database yang diperlukan secara otomatis.
-
-Jika `dotnet-ef` belum terinstal, jalankan:
-
-```bash
-dotnet tool install --global dotnet-ef
-```
-
-### Menjalankan Aplikasi
-
-Jalankan aplikasi dengan:
-
-```bash
-dotnet run
-```
-
-Setelah aplikasi berhasil dijalankan, terminal akan menampilkan URL aplikasi.
-
-Buka Swagger UI melalui:
-
-```text
-https://localhost:xxxx/swagger
-```
-
-atau:
-
-```text
-http://localhost:xxxx/swagger
-```
-
-Port `xxxx` mengikuti konfigurasi aplikasi yang ditampilkan pada terminal.
-
-### API Documentation
-
-Swagger UI menyediakan dokumentasi endpoint API sekaligus memungkinkan Anda menguji endpoint secara langsung.
-
-Alur penggunaan API secara umum:
-
-1. Register atau login menggunakan endpoint autentikasi.
-2. Dapatkan JWT token.
-3. Gunakan token tersebut pada endpoint yang membutuhkan autentikasi.
-4. Lakukan top-up untuk menambah saldo.
-5. Gunakan fitur transfer untuk mengirim saldo ke pengguna lain.
+1. Buka terminal dan masuk ke direktori Frontend:
+   ```bash
+   cd Frontend
+   ```
+2. Instal dependencies:
+   ```bash
+   npm install
+   ```
+   *(Atau gunakan package manager lain: `yarn install`, `pnpm install`, `bun install`)*
+3. Jalankan development server:
+   ```bash
+   npm run dev
+   ```
+4. Buka browser dan akses aplikasi melalui URL yang ditampilkan di terminal (biasanya `http://localhost:3000`).
 
 ---
 
 ## English
 
-Wallet API is a **.NET 10** application that provides secure digital wallet functionality, including:
+This project is divided into two main parts:
+1. **Backend**: A RESTful API built with .NET 10.
+2. **Frontend**: An interactive web interface built with Nuxt.js.
+
+### 🚀 Backend (API)
+
+The Backend provides secure digital wallet functionality, including:
 
 - 🔐 JWT authentication
 - 💰 Digital wallet management
@@ -143,20 +120,18 @@ Wallet API is a **.NET 10** application that provides secure digital wallet func
 - 🔄 Database transactions for maintaining balance consistency
 - 📖 Swagger UI for API documentation and testing
 
-### Prerequisites
+#### Backend Prerequisites
 
 Make sure the following software is installed:
-
 - .NET 10 SDK
 - Microsoft SQL Server
 - SQL Server Management Studio (SSMS)
 - Entity Framework Core Tools (`dotnet-ef`)
 
-### Environment Configuration
+#### Backend Environment Configuration
 
 The application uses a `.env` file to manage application configuration and secrets.
-
-Create a `.env` file in the project root:
+Create a `.env` file in the `Backend` directory:
 
 ```env
 JwtSecretKey=your-secure-jwt-secret-key-minimum-32-characters
@@ -164,94 +139,61 @@ DbUserId=your-database-user
 DbPassword=your-database-password
 ```
 
-#### Environment Variables
-
 | Variable | Description |
 |---|---|
 | `JwtSecretKey` | Cryptographic secret key used to sign and verify JWT tokens. Use at least 32 characters. |
 | `DbUserId` | User ID used to authenticate the SQL Server database connection. |
 | `DbPassword` | Password for the SQL Server database account. |
 
-> ⚠️ **Security Notice**
->
-> Never use actual secret keys or database passwords in `README.md`.
->
-> Do not commit the `.env` file to the repository. Add `.env` to `.gitignore`.
+> ⚠️ **Security Notice**: Do not commit the `.env` file to the repository.
 
-Example `.gitignore`:
+#### Backend Installation & Running
 
-```gitignore
-.env
-```
+1. Open your terminal and navigate to the Backend directory:
+   ```bash
+   cd Backend
+   ```
+2. Restore project dependencies:
+   ```bash
+   dotnet restore
+   ```
+3. Apply Database Migrations (ensure `.env` and SQL Server are ready):
+   ```bash
+   dotnet ef database update
+   ```
+   *(If `dotnet-ef` is not installed, install it globally: `dotnet tool install --global dotnet-ef`)*
+4. Run the application:
+   ```bash
+   dotnet run
+   ```
+5. Access Swagger UI to test the API at the URL displayed in your terminal (e.g., `https://localhost:xxxx/swagger`).
 
-### Installation
+---
 
-Clone the repository and navigate to the project directory:
+### 🖥️ Frontend (Web)
 
-```bash
-git clone <repository-url>
-cd <project-directory>
-```
+The Frontend is the user interface built with **Nuxt.js** that communicates with the Backend API.
 
-Restore the project dependencies:
+#### Frontend Prerequisites
+- Node.js (version 18 or latest recommended)
+- npm, yarn, pnpm, or bun
 
-```bash
-dotnet restore
-```
+#### Frontend Installation & Running
 
-### Database Migration
-
-Make sure SQL Server is running and the database configuration in `.env` is correct.
-
-Apply the existing database migrations:
-
-```bash
-dotnet ef database update
-```
-
-This command applies the existing migrations and automatically creates the required database tables.
-
-If `dotnet-ef` is not installed, install it globally:
-
-```bash
-dotnet tool install --global dotnet-ef
-```
-
-### Running the Application
-
-Start the application with:
-
-```bash
-dotnet run
-```
-
-Once the application starts successfully, the terminal will display the application URL.
-
-Open Swagger UI at:
-
-```text
-https://localhost:xxxx/swagger
-```
-
-or:
-
-```text
-http://localhost:xxxx/swagger
-```
-
-The `xxxx` port depends on the application configuration displayed in the terminal.
-
-### API Documentation
-
-Swagger UI provides interactive API documentation and allows you to test the available endpoints directly.
-
-Typical API usage flow:
-
-1. Register or log in using the authentication endpoint.
-2. Obtain a JWT token.
-3. Use the token to access authenticated endpoints.
-4. Perform a top-up to add funds to the wallet.
-5. Use the transfer feature to send funds to another user.
+1. Open your terminal and navigate to the Frontend directory:
+   ```bash
+   cd Frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+   *(Or use your preferred package manager: `yarn install`, `pnpm install`, `bun install`)*
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser and navigate to the displayed URL (usually `http://localhost:3000`).
 
 ---
 
